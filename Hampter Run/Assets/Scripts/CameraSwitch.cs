@@ -23,6 +23,14 @@ public class CameraSwitch : MonoBehaviour
     private Quaternion targetRot;
     private float targetSize;
 
+    private BorderFollowCamera followCamera;
+    private Movement player;
+
+    private void Start()
+    {
+        followCamera = FindFirstObjectByType<BorderFollowCamera>();
+        player = FindFirstObjectByType<Movement>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C) && !isTransitioning)
@@ -56,15 +64,20 @@ public class CameraSwitch : MonoBehaviour
         startRot = mainCamera.transform.rotation;
         startSize = mainCamera.orthographicSize;
 
-        if (is2D)
+
+        if (is2D) //This is ISOMETRIC VIEW
         {
-            targetPos = isoPosition;
+            Vector3 adjustCamPos = new Vector3(player.transform.position.x, player.transform.position.y, 10);
+
+            targetPos = isoPosition + player.transform.position;
             targetRot = isoRotation;
             targetSize = isoSize;
         }
-        else
+        else //This is 2D VIEW
         {
-            targetPos = twoDPosition;
+            Vector3 adjustCamPos = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+
+            targetPos = twoDPosition + adjustCamPos;
             targetRot = twoDRotation;
             targetSize = twoDSize;
         }

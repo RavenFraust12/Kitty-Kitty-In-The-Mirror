@@ -3,7 +3,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [Header("Camera Switch Script")]
-    public CameraSwitch cameraSwitch;
+    private CameraSwitch cameraSwitch;
 
     [Header("Movement Properties")]
     public float moveSpeed;
@@ -14,9 +14,19 @@ public class Movement : MonoBehaviour
 
     private Rigidbody rb;
 
+    [Header("Animation")]
+    private Animator anim;
+
+    [Header("Push Mechanic")]
+    private PushMechanic pushMechanic;
+    private bool isPushing = false;
+
     private void Start()
     {
+        cameraSwitch = FindFirstObjectByType<CameraSwitch>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        pushMechanic = GetComponent<PushMechanic>();
 
         GameManager.instance.StartGame();
     }
@@ -55,28 +65,69 @@ public class Movement : MonoBehaviour
         {
             Quaternion rotation = Quaternion.LookRotation(move);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+            if (isGrounded)
+            {
+                anim.SetInteger("AnimState", 1);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if (move.magnitude == 0)
+        {
+            if (isGrounded)
+            {
+                anim.SetInteger("AnimState", 0);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true) // Jumping
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            anim.SetTrigger("JumpAnim");
             isGrounded = false;
         }
     }
 
     void MoveIso()
     {
-        //float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Horizontal");
-
-        Vector3 move = new Vector3(0, 0, -vertical);
-
-        transform.Translate(move * moveSpeed * Time.deltaTime, Space.World);
-
-        if (move.magnitude > 0)
+        if (!isPushing)
         {
-            Quaternion rotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            float vertical = Input.GetAxisRaw("Horizontal");
+
+            Vector3 move = new Vector3(0, 0, -vertical);
+
+            transform.Translate(move * moveSpeed * Time.deltaTime, Space.World);
+
+            if (move.magnitude > 0)
+            {
+                Quaternion rotation = Quaternion.LookRotation(move);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+                if (isGrounded)
+                {
+                    anim.SetInteger("AnimState", 1);
+                }
+            }
+
+            if (move.magnitude == 0)
+            {
+                if (isGrounded)
+                {
+                    anim.SetInteger("AnimState", 0);
+                }
+            }
         }
+        
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && isPushing == false) //Pushing
+        {
+            anim.SetInteger("AnimState", 2);
+            isPushing = true;
+            Invoke("IsPushingTrue", 1);
+        }
+    }
+
+    void IsPushingTrue()
+    {
+        isPushing = false;
     }
 }
