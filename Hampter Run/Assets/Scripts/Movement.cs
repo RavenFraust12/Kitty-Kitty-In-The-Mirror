@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Movement : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class Movement : MonoBehaviour
 
     private Rigidbody rb;
 
-    [Header("Animation")]
-    private Animator anim;
+    [Header("Animation Manager")]
+    private AnimationManager animator;
 
     [Header("Push Mechanic")]
     private PushMechanic pushMechanic;
@@ -25,8 +26,8 @@ public class Movement : MonoBehaviour
     {
         cameraSwitch = FindFirstObjectByType<CameraSwitch>();
         rb = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
-        pushMechanic = GetComponent<PushMechanic>();
+        pushMechanic = GetComponentInChildren<PushMechanic>();
+        animator = GetComponent<AnimationManager>();
 
         GameManager.instance.StartGame();
     }
@@ -50,6 +51,7 @@ public class Movement : MonoBehaviour
         if (!isGrounded)
         {
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+            animator.Falling();
         }
     }
 
@@ -68,7 +70,7 @@ public class Movement : MonoBehaviour
 
             if (isGrounded)
             {
-                anim.SetInteger("AnimState", 1);
+                animator.Move();
             }
         }
 
@@ -76,16 +78,20 @@ public class Movement : MonoBehaviour
         {
             if (isGrounded)
             {
-                anim.SetInteger("AnimState", 0);
+                animator.Idle();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true) // Jumping
         {
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-            anim.SetTrigger("JumpAnim");
-            isGrounded = false;
+            animator.Jumping();
         }
+    }
+
+    public void JumpForce()
+    {
+        rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        isGrounded = false;
     }
 
     void MoveIso()
@@ -105,7 +111,7 @@ public class Movement : MonoBehaviour
 
                 if (isGrounded)
                 {
-                    anim.SetInteger("AnimState", 1);
+                    animator.Move();
                 }
             }
 
@@ -113,14 +119,14 @@ public class Movement : MonoBehaviour
             {
                 if (isGrounded)
                 {
-                    anim.SetInteger("AnimState", 0);
+                    animator.Idle();
                 }
             }
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && isPushing == false) //Pushing
         {
-            anim.SetInteger("AnimState", 2);
+            pushMechanic.RaycastPush();
             isPushing = true;
             Invoke("IsPushingTrue", 1);
         }

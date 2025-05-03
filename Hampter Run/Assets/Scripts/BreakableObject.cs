@@ -5,30 +5,32 @@ public class BreakableObject : MonoBehaviour, IPushable
     private Animator anim;
     private bool isInteracted = false;
     public GameObject destroyedObject;
+    public GameObject currentObject;
     private Movement player;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         player = FindFirstObjectByType<Movement>();
     }
     public void PushInteraction()
     {
         if (!isInteracted)
         {
-            transform.LookAt(player.transform.position);
+            Vector3 direction = (transform.position - player.transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
 
             isInteracted = true;
             anim.SetTrigger("Break");
-            Invoke("Destroying", 0.5f);
+            Invoke("Destroying", 1f);
         }
     }
 
     void Destroying()
     {
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        MeshRenderer meshRenderer = currentObject.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
         destroyedObject.SetActive(true);
-        Destroy(transform.parent.gameObject, 0.5f);
+        Destroy(transform.gameObject, 0.5f);
     }
 }
