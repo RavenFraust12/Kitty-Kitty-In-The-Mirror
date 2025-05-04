@@ -4,8 +4,7 @@ public class BreakableObject : MonoBehaviour, IPushable
 {
     private Animator anim;
     private bool isInteracted = false;
-    public GameObject destroyedObject;
-    public GameObject currentObject;
+    public GameObject particleSmoke;
     private Movement player;
 
     void Start()
@@ -28,9 +27,9 @@ public class BreakableObject : MonoBehaviour, IPushable
 
     void Destroying()
     {
-        MeshRenderer meshRenderer = currentObject.GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
-        destroyedObject.SetActive(true);
-        Destroy(transform.gameObject, 0.5f);
+        Vector3 offset = new Vector3(0, 0, 3);
+        GameObject Particle = Instantiate(particleSmoke, transform.position, Quaternion.identity);
+        Destroy(Particle,1);
+        Destroy(transform.gameObject);
     }
 }
