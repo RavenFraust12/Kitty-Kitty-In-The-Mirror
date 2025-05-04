@@ -21,7 +21,7 @@ public class NextLevel : MonoBehaviour
         {
             levelComplete.SetActive(true);
             requirement.FinishLevel();
-
+            AudioManager.instance.FinishLevel();
             GameManager.instance.PauseGame();
         }
     }

@@ -29,6 +29,8 @@ public class BreakableObject : MonoBehaviour, IPushable
     {
         Vector3 offset = new Vector3(0, 0, 3);
         GameObject Particle = Instantiate(particleSmoke, transform.position, Quaternion.identity);
+        AudioManager.instance.BreakVase();
+
         Destroy(Particle,1);
         Destroy(transform.gameObject);
     }

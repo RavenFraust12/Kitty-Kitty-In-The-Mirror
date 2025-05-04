@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -21,6 +22,11 @@ public class Movement : MonoBehaviour
     [Header("Push Mechanic")]
     private PushMechanic pushMechanic;
     private bool isPushing = false;
+
+    [Header("Audio Meows")]
+    public AudioClip[] meows;
+    public AudioSource sfxSource;
+    private bool canMeow = true;
 
     private void Start()
     {
@@ -85,6 +91,21 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true) // Jumping
         {
             animator.Jumping();
+            StartCoroutine(PlayAudio());
+        }
+    }
+
+    IEnumerator PlayAudio()
+    {
+        if (canMeow)
+        {
+            canMeow = false;
+            sfxSource.pitch = Random.Range(0.8f, 1.2f);
+            sfxSource.volume = 0.1f;
+            sfxSource.PlayOneShot(meows[Random.Range(0, meows.Length)]);
+
+            yield return new WaitForSeconds(5f);
+            canMeow = true;
         }
     }
 
@@ -127,6 +148,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && isPushing == false) //Pushing
         {
             pushMechanic.RaycastPush();
+            StartCoroutine(PlayAudio());
             isPushing = true;
             Invoke("IsPushingTrue", 1);
         }

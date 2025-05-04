@@ -177,8 +177,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm: {fileID: 2291322012305083238}
   sfx: {fileID: 8785236643914725994}
-  bgmClips: []
-  sfxClips: []
+  bgmClips:
+  - {fileID: 8300000, guid: 2e17634cf908760409f32f2dc7756836, type: 3}
+  - {fileID: 8300000, guid: 352c06c1ed8aa2f4c905553f258d535c, type: 3}
+  sfxClips:
+  - {fileID: 8300000, guid: 5f134ce475bfee4498f6c5bc62760cf6, type: 3}
+  - {fileID: 8300000, guid: 1281f6b19dbf5874cbe54fac525788c2, type: 3}
+  - {fileID: 8300000, guid: a577446e1822b654bae9f38d0b74673f, type: 3}
+  - {fileID: 8300000, guid: 36ab6ab98a438e1499e8f5590d3e4b04, type: 3}
 --- !u!1 &9201016458721008092
 GameObject:
   m_ObjectHideFlags: 0

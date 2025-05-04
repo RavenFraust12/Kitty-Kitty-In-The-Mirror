@@ -235,6 +235,11 @@ MonoBehaviour:
   jumpForce: 12
   gravity: 30
   isGrounded: 0
+  meows:
+  - {fileID: 8300000, guid: 9aa38b7c64d9b094591a0dd56e64e6fe, type: 3}
+  - {fileID: 8300000, guid: 2cc52d10b62482c47b784d4c21685c49, type: 3}
+  - {fileID: 8300000, guid: 266d56c87b411344c9a0f7389db9ae80, type: 3}
+  sfxSource: {fileID: 0}
 --- !u!65 &8477559151867167843
 BoxCollider:
   m_ObjectHideFlags: 0
