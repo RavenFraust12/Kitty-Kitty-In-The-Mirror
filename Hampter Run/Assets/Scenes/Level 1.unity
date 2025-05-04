@@ -1255,7 +1255,7 @@ PrefabInstance:
     - target: {fileID: 4564436845589510366, guid: d683e03a6a66a0542a8ffeb863677de3, type: 3}
       propertyPath: sfxSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 711490743341243760}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6605,6 +6605,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7581b5559e66ae44b51da39c6b4469d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &711490743341243760 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8785236643914725994, guid: 7c3c31ae443c5c7488894b28f5780992, type: 3}
+  m_PrefabInstance: {fileID: 711490743341243758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &761940225463203212
 MeshFilter:
   m_ObjectHideFlags: 0
