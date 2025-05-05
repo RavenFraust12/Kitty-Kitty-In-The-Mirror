@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     public void ButtonClick()
     {
-        sfx.volume = 0.1f;
+        sfx.volume = 0.3f;
         sfx.PlayOneShot(sfxClips[0]);
     }
     public void BreakVase()
@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
     }
     public void CollectStar()
     {
-        sfx.volume = 0.1f;
+        sfx.volume = 0.3f;
         sfx.PlayOneShot(sfxClips[2]);
     }
     public void FinishLevel()

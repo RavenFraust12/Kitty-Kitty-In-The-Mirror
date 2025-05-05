@@ -14,7 +14,7 @@ public class StarPoints : MonoBehaviour
         {
             starRequirement.starsAcquired++;
             starRequirement.DelayShow(starRequirement.starsObject, starRequirement.starsAcquired - 1);
-            MeshRenderer mesh = GetComponent<MeshRenderer>();
+            AudioManager.instance.CollectStar();
             Destroy(gameObject);
         }
     }

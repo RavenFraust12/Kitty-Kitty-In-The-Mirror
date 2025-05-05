@@ -5365,6 +5365,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2291322012305083238, guid: 7c3c31ae443c5c7488894b28f5780992, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291322012305083238, guid: 7c3c31ae443c5c7488894b28f5780992, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 2e17634cf908760409f32f2dc7756836, type: 3}

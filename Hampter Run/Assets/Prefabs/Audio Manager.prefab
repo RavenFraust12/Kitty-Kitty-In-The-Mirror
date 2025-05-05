@@ -185,6 +185,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1281f6b19dbf5874cbe54fac525788c2, type: 3}
   - {fileID: 8300000, guid: a577446e1822b654bae9f38d0b74673f, type: 3}
   - {fileID: 8300000, guid: 36ab6ab98a438e1499e8f5590d3e4b04, type: 3}
+  isMainMenu: 0
 --- !u!1 &9201016458721008092
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
