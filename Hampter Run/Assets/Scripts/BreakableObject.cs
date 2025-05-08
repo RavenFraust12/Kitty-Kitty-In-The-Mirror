@@ -21,17 +21,16 @@ public class BreakableObject : MonoBehaviour, IPushable
 
             isInteracted = true;
             anim.SetTrigger("Break");
-            Invoke("Destroying", 1f);
         }
     }
 
-    void Destroying()
+    public void Destroying()
     {
         Vector3 offset = new Vector3(0, 0, 3);
         GameObject Particle = Instantiate(particleSmoke, transform.position, Quaternion.identity);
         AudioManager.instance.BreakVase();
 
-        Destroy(Particle,1);
+        Destroy(Particle,1.5f);
         Destroy(transform.gameObject);
     }
 }

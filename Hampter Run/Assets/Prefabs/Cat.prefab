@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotationSpeed: 10
-  jumpForce: 12
+  jumpForce: 13
   gravity: 30
   isGrounded: 0
   meows:
@@ -1184,7 +1184,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4249080807922501592}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f5608f556bd22ed458a7e702c8cb5c11, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

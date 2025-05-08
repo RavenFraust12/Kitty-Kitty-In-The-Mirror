@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 886820835565410002}
   - component: {fileID: 1752031390024714050}
   - component: {fileID: 5008335342317259793}
+  - component: {fileID: 7231605928867370409}
   m_Layer: 3
   m_Name: Vase(Breakable Object)
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1348109162456179536}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 87.34929, y: 0, z: 0}
 --- !u!33 &886820835565410002
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -111,6 +112,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7231605928867370409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939238270698283744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95187ccc5400031429b426feee0660b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakableObject: {fileID: 0}
 --- !u!1 &4489734330967184281
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf12354b765264488a6016715e298a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSmoke: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+  particleSmoke: {fileID: 7967921636709321682, guid: 8daad93ed05ff484c96b56cbf323e78f, type: 3}
 --- !u!65 &835732269486588114
 BoxCollider:
   m_ObjectHideFlags: 0
