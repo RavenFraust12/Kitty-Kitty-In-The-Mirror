@@ -3,8 +3,14 @@ using UnityEngine;
 public class BorderFollowCamera : MonoBehaviour
 {
     public Transform player;
-    public Vector2 followBounds = new Vector2(2f, 2f); // Deadzone width & height
+
+    // Deadzone width & height
+    public Vector2 followBounds = new Vector2(2f, 2f);
     public float followSpeed = 5f;
+
+    // World X limits
+    public float minX = -10f;
+    public float maxX = 10f;
 
     public bool isIsometric = false;
 
@@ -12,7 +18,7 @@ public class BorderFollowCamera : MonoBehaviour
 
     void Start()
     {
-        // Optional offset so the camera doesn’t start directly on the player
+        // Optional offset so the camera doesnâ€™t start directly on the player
         offset = transform.position - player.position;
     }
 
@@ -37,7 +43,14 @@ public class BorderFollowCamera : MonoBehaviour
             targetPosition += transform.up * (playerLocal.y - (followBounds.y * dir));
         }
 
-        // Smoothly move camera to the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        // Clamp world X position
+        targetPosition.x = Mathf.Clamp(targetPosition.x, minX, maxX);
+
+        // Smooth camera movement
+        transform.position = Vector3.Lerp(
+            transform.position,
+            targetPosition,
+            followSpeed * Time.deltaTime
+        );
     }
 }
