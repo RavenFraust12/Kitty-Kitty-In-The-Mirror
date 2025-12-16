@@ -4067,12 +4067,15 @@ MonoBehaviour:
 
     - A and D to move up and down
 
+    - Space to push
 
-    Press C to change views
+
+    Press C to
+    change perspective
 
 
-    Navigate
-    through the level by swapping from 2D view and Isometric View.'
+    Navigate through the level by swapping from 2D view
+    and Isometric View.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f7e3a6c0d678bd4c815adef96bf63a1, type: 2}
   m_sharedMaterial: {fileID: -2504076241851377870, guid: 6f7e3a6c0d678bd4c815adef96bf63a1, type: 2}

@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0c308c190477b40b1076b48b0c6407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Level 1
+  nextScene: Level 3
   levelComplete: {fileID: 0}
   requirement: {fileID: 0}
 --- !u!114 &37515381
@@ -2731,7 +2731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0c308c190477b40b1076b48b0c6407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Level 1
+  nextScene: Level 3
   levelComplete: {fileID: 0}
   requirement: {fileID: 0}
 --- !u!114 &787742583

@@ -3,24 +3,28 @@ using UnityEngine;
 public class JumpMechanics : MonoBehaviour
 {
     private Movement movement;
+    private int groundContacts;
 
     private void Awake()
     {
         movement = GetComponentInParent<Movement>();
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (other.CompareTag("Ground"))
         {
+            groundContacts++;
             movement.isGrounded = true;
         }
     }
-    private void OnTriggerExit(Collider collision)
+
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (other.CompareTag("Ground"))
         {
-            movement.isGrounded = false;
+            groundContacts--;
+            movement.isGrounded = groundContacts > 0;
         }
     }
 }
