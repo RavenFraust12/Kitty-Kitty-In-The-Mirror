@@ -4,7 +4,7 @@ using UnityEngine;
 public class StarRequirement : MonoBehaviour
 {
     public string levelName;
-    public int starsAcquired = 0;
+    [Range(0,3)]public int starsAcquired = 0;
     public GameObject[] starsObject;
 
     public GameObject[] starsObtainedInGame; //In Game

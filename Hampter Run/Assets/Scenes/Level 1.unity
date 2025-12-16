@@ -7802,6 +7802,10 @@ PrefabInstance:
       value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 5944722759580972720, guid: 926c3f8002d723c4a904503ff9da2cec, type: 3}
+      propertyPath: nextScene
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944722759580972720, guid: 926c3f8002d723c4a904503ff9da2cec, type: 3}
       propertyPath: requirement
       value: 
       objectReference: {fileID: 1817819539}
